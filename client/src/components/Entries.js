@@ -1,17 +1,22 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import Month from "./Month.js";
 
-// styles;
-const StyledEntries = styled.nav`
-	width: 100%;
-	heigh: 100%;
-	background-color: #f56991;
-	padding: 15px;
-`;
+import { StyledButton, StyledEntries } from "./component_styles/styles.js";
 
 class Entries extends Component {
 	render() {
-		return <StyledEntries>hola</StyledEntries>;
+		return (
+			<StyledEntries>
+				<div>
+					<i
+						style={{ color: "#d1f2a5", cursor: "pointer" }}
+						className="fas fa-plus-circle"
+					/>
+					<StyledButton primary>New Month</StyledButton>
+					<Month />
+				</div>
+			</StyledEntries>
+		);
 	}
 }
 
