@@ -1,16 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 
 import { StyledContainer } from "./component_styles/styles.js";
 
 // components;
 import Entries from "./Entries.js";
 
-const GridContainer = () => {
-	return (
-		<StyledContainer>
-			<Entries />
-		</StyledContainer>
-	);
-};
+class GridContainer extends Component {
+	render() {
+		return (
+			<StyledContainer>
+				<Entries showMonth={this.props.showMonth} />
+			</StyledContainer>
+		);
+	}
+}
 
 export default GridContainer;

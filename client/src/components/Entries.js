@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Month from "./Month.js";
 
 import { StyledButton, StyledEntries } from "./component_styles/styles.js";
 
@@ -12,12 +11,20 @@ class Entries extends Component {
 						style={{ color: "#d1f2a5", cursor: "pointer" }}
 						className="fas fa-plus-circle"
 					/>
-					<StyledButton primary>New Month</StyledButton>
-					<Month />
+					<StyledButton
+						primary
+						onClick={() => this.props.showMonth(true)}
+					>
+						New Month
+					</StyledButton>
 				</div>
 			</StyledEntries>
 		);
 	}
 }
+
+// function mapDispatchToProps(dispatch) {
+// 	return bindActionCreators({ showMonthForm }, dispatch);
+// }
 
 export default Entries;
