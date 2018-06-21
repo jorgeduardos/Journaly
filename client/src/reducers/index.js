@@ -1,3 +1,7 @@
 import { combineReducers } from "redux";
 
-export default combineReducers({});
+import SelectMonthReducer from "./SelectMonthReducer.js";
+
+export default combineReducers({
+	selectedMonth: SelectMonthReducer
+});

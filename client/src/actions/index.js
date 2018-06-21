@@ -1,8 +1,8 @@
-// export const SHOW_MONTH_FORM = "show_form_reducer";
+export const SELECT_MONTH = "select_month";
 
-// export function showMonthForm() {
-// 	return {
-// 		type: SHOW_MONTH_FORM,
-// 		payload: true
-// 	};
-// }
+export function selectMonth(date) {
+	return {
+		type: SELECT_MONTH,
+		payload: date
+	};
+}

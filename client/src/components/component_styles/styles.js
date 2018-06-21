@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// icons form fontAwesome
+
 // Header styles :
 
 export const StyledHeader = styled.header`
@@ -58,6 +60,7 @@ export const StyledDivForm = styled.div`
 	border: 1px solid black;
 	background-color: #f8ffd5;
 	border-radius: 10px;
+	z-index: 100;
 `;
 
 export const StyledTitleDiv = styled.div`
