@@ -4,7 +4,7 @@ import moment from "moment";
 import DatePicker from "react-datepicker";
 import { bindActionCreators } from "redux";
 
-import { selectMonth } from "../actions/";
+import { selectMonth, renderMonthList } from "../actions/";
 
 // styles
 import "react-datepicker/dist/react-datepicker.css";
@@ -25,6 +25,7 @@ class EnterMonthForm extends Component {
 	onClickHandler(e) {
 		e.preventDefault();
 		this.props.selectMonth(this.state.startDate.toDate());
+		this.props.renderMonthList(this.state.startDate.toDate());
 		this.props.showMonth(false);
 	}
 
@@ -79,7 +80,7 @@ class EnterMonthForm extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ selectMonth }, dispatch);
+	return bindActionCreators({ renderMonthList, selectMonth }, dispatch);
 }
 
 export default connect(

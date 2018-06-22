@@ -17,3 +17,9 @@ ReactDOM.render(
 	document.getElementById("root")
 );
 registerServiceWorker();
+
+//  https://github.com/singletoncoding/stream-budget-app
+
+//  https://www.youtube.com/watch?v=p0O1VVqRSK0
+
+//  https://www.youtube.com/watch?v=Nsjsiz2A9mg

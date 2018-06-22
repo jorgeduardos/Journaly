@@ -1,11 +1,19 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
+import Month from "./Month.js";
 import { StyledButton, StyledEntries } from "./component_styles/styles.js";
 
 class Entries extends Component {
 	render() {
+		console.log(this.props.months);
 		return (
 			<StyledEntries>
+				{this.props.months.length === 0 ? (
+					console.log("not months to display")
+				) : (
+					<Month />
+				)}
 				<div>
 					<i
 						style={{ color: "#d1f2a5", cursor: "pointer" }}
@@ -27,4 +35,10 @@ class Entries extends Component {
 // 	return bindActionCreators({ showMonthForm }, dispatch);
 // }
 
-export default Entries;
+function mapStateToProps(state) {
+	return {
+		months: state.months
+	};
+}
+
+export default connect(mapStateToProps)(Entries);

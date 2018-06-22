@@ -16,7 +16,6 @@ class Calendar extends Component {
 	}
 
 	render() {
-		const date = new Date(this.props.selectedMonth);
 		return (
 			<BigCalendar
 				events={[]}
@@ -24,7 +23,7 @@ class Calendar extends Component {
 				endAccessor="end"
 				views={["month"]}
 				toolbar={true}
-				date={date}
+				date={this.props.selectedMonth}
 				onNavigate={this.onNavigateHandler.bind(this)}
 			/>
 		);

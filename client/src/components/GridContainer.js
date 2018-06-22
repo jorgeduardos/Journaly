@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { StyledContainer } from "./component_styles/styles.js";
 
 // components;

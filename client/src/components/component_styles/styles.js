@@ -43,7 +43,7 @@ export const StyledEntries = styled.nav`
 	width: 100%;
 	heigh: 100%;
 	background-color: #f56991;
-	padding: 15px;
+	padding: 15px 15px 15px 25px;
 `;
 
 // EnterMonthForm

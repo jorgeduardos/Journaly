@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import moment from "moment";
+
+import { selectMonth } from "../actions/";
 
 import { StyledButton } from "./component_styles/styles.js";
 
@@ -7,22 +12,42 @@ class Month extends Component {
 		return (
 			<div
 				style={{
-					width: "90%",
-					float: "right",
 					marginTop: "5px"
 				}}
 			>
-				<h4 style={{ fontSize: "1em", marginBottom: "5px" }}>
-					July 2018
+				<h4
+					style={{
+						fontSize: "1em",
+						marginBottom: "5px",
+						cursor: "pointer"
+					}}
+					onClick={() => this.props.selectMonth(this.props.months)}
+				>
+					{moment(this.props.months).format("MMMM YYYY")}
 				</h4>
-				<i
-					style={{ color: "#d1f2a5", cursor: "pointer" }}
-					className="fas fa-plus-circle"
-				/>
-				<StyledButton>New Day</StyledButton>
+				<div style={{ marginLeft: "20px" }}>
+					<i
+						style={{ color: "#d1f2a5", cursor: "pointer" }}
+						className="fas fa-plus-circle"
+					/>
+					<StyledButton>New Day</StyledButton>
+				</div>
 			</div>
 		);
 	}
 }
 
-export default Month;
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ selectMonth }, dispatch);
+}
+
+function mapStateToProps(state) {
+	return {
+		months: state.months
+	};
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Month);
