@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 import styled from "styled-components";
 
 // components
@@ -10,6 +11,11 @@ const StyledApp = styled.section`
 	height: 100vh;
 	position: relative;
 `;
+
+//dummy component
+const Landing = () => {
+	return <h1>Landing</h1>;
+};
 
 class App extends Component {
 	constructor(props) {
@@ -25,13 +31,22 @@ class App extends Component {
 
 	render() {
 		return (
-			<StyledApp>
-				<Header />
-				<GridContainer showMonth={this.showMonth} />
-				{this.state.showMonthForm ? (
-					<EnterMonthForm showMonth={this.showMonth} />
-				) : null}
-			</StyledApp>
+			<BrowserRouter>
+				<StyledApp>
+					<Header />
+					<Route exact path={"/"} component={Landing} />
+					<Route
+						exact
+						path={"/dashboard"}
+						render={() => (
+							<GridContainer showMonth={this.showMonth} />
+						)}
+					/>
+					{this.state.showMonthForm ? (
+						<EnterMonthForm showMonth={this.showMonth} />
+					) : null}
+				</StyledApp>
+			</BrowserRouter>
 		);
 	}
 }
