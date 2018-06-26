@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import { fetchUser } from "./actions/";
 
 // components
 import Header from "./components/Header.js";
@@ -18,6 +22,10 @@ const Landing = () => {
 };
 
 class App extends Component {
+	componentDidMount() {
+		this.props.fetchUser();
+	}
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -51,10 +59,11 @@ class App extends Component {
 	}
 }
 
-// function mapStateToProps(state) {
-// 	return {
-// 		showMonthForm: state.showMonthForm
-// 	};
-// }
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ fetchUser }, dispatch);
+}
 
-export default App;
+export default connect(
+	null,
+	mapDispatchToProps
+)(App);

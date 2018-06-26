@@ -25,6 +25,15 @@ export const StyledLogin = styled.a`
 	margin-top: 15px;
 	margin-right: 2em;
 	cursor: pointer;
+	text-decoration: none;
+`;
+
+export const StyledWelcome = styled.div`
+	display: inline-block;
+	float: right;
+	margin-top: 15px;
+	margin-right: 2em;
+	cursor: default;
 `;
 
 // GridContainer styles
