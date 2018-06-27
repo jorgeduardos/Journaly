@@ -6,7 +6,7 @@ export const FETCH_USER = "fetch_user";
 
 export const fetchUser = () => async dispatch => {
 	const res = await axios.get("/api/current_user");
-	console.log(res.data);
+	// console.log(res.data);
 	dispatch({
 		type: FETCH_USER,
 		payload: res.data
@@ -20,10 +20,30 @@ export function selectMonth(date) {
 	};
 }
 
-//this should return a list of months fetch from db, add the next month to that list
-export function renderMonthList(date) {
-	return {
+export const submitMonth = date => async dispatch => {
+	const res = await axios.post("/api/new_month", { date: date });
+	dispatch({
+		type: FETCH_USER,
+		payload: res.data
+	});
+};
+
+export const fetchMonths = () => async dispatch => {
+	const res = await axios.get("/api/months");
+	// console.log(res);
+	dispatch({
 		type: MONTH,
-		payload: date
-	};
-}
+		payload: res.data
+	});
+};
+
+export const deleteMonth = id => async dispatch => {
+	const res = await axios.delete("/api/delete_month", {
+		data: { monthID: id }
+	});
+
+	dispatch({
+		type: MONTH,
+		payload: res.data
+	});
+};

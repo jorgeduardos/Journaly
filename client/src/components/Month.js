@@ -3,11 +3,61 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import moment from "moment";
 
-import { selectMonth } from "../actions/";
+import Day from "./Day.js";
 
-import { StyledButton } from "./component_styles/styles.js";
+import { selectMonth, deleteMonth } from "../actions/";
 
 class Month extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			showDays: false,
+			eyeDisplay: true
+		};
+	}
+
+	onClickHandler() {
+		this.props.showCalendarFunction(true);
+		let newDate = new Date(this.props.date);
+		this.props.selectMonth(newDate);
+	}
+
+	onTrashClickHanlder() {
+		this.props.deleteMonth(this.props.id);
+	}
+
+	renderDays() {
+		return this.state.showDays ? (
+			<Day showCalendarFunction={this.props.showCalendarFunction} />
+		) : null;
+	}
+
+	renderEye() {
+		return this.state.eyeDisplay ? (
+			<i
+				className="far fa-eye"
+				style={{ marginLeft: "10px" }}
+				onClick={() =>
+					this.setState({
+						showDays: !this.state.showDays,
+						eyeDisplay: !this.state.eyeDisplay
+					})
+				}
+			/>
+		) : (
+			<i
+				className="far fa-eye-slash"
+				style={{ marginLeft: "10px" }}
+				onClick={() =>
+					this.setState({
+						showDays: !this.state.showDays,
+						eyeDisplay: !this.state.eyeDisplay
+					})
+				}
+			/>
+		);
+	}
+
 	render() {
 		return (
 			<div
@@ -19,35 +69,30 @@ class Month extends Component {
 					style={{
 						fontSize: "1em",
 						marginBottom: "5px",
-						cursor: "pointer"
+						cursor: "pointer",
+						display: "inline-block"
 					}}
-					onClick={() => this.props.selectMonth(this.props.months)}
+					onClick={this.onClickHandler.bind(this)}
 				>
-					{moment(this.props.months).format("MMMM YYYY")}
+					{moment(this.props.date).format("MMMM YYYY")}
 				</h4>
-				<div style={{ marginLeft: "20px" }}>
-					<i
-						style={{ color: "#d1f2a5", cursor: "pointer" }}
-						className="fas fa-plus-circle"
-					/>
-					<StyledButton>New Day</StyledButton>
-				</div>
+				{this.renderEye()}
+				<i
+					className="far fa-trash-alt"
+					style={{ float: "right" }}
+					onClick={this.onTrashClickHanlder.bind(this)}
+				/>
+				{this.renderDays()}
 			</div>
 		);
 	}
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ selectMonth }, dispatch);
-}
-
-function mapStateToProps(state) {
-	return {
-		months: state.months
-	};
+	return bindActionCreators({ selectMonth, deleteMonth }, dispatch);
 }
 
 export default connect(
-	mapStateToProps,
+	null,
 	mapDispatchToProps
 )(Month);

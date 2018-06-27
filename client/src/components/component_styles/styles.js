@@ -58,7 +58,7 @@ export const StyledEntries = styled.nav`
 // EnterMonthForm
 
 export const StyledDivForm = styled.div`
-	height: 200px;
+	height: 240px;
 	width: 300px;
 	position: absolute;
 	top: 0;

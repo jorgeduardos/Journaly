@@ -4,7 +4,7 @@ import moment from "moment";
 import DatePicker from "react-datepicker";
 import { bindActionCreators } from "redux";
 
-import { selectMonth, renderMonthList } from "../actions/";
+import { selectMonth, submitMonth, fetchMonths } from "../actions/";
 
 // styles
 import "react-datepicker/dist/react-datepicker.css";
@@ -13,6 +13,10 @@ import {
 	StyledDivForm,
 	StyledInputButton
 } from "../components/component_styles/styles.js";
+
+const CalendarContainer = () => {
+	return <div style={{ visibility: "hidden" }} />;
+};
 
 class EnterMonthForm extends Component {
 	constructor(props) {
@@ -25,7 +29,8 @@ class EnterMonthForm extends Component {
 	onClickHandler(e) {
 		e.preventDefault();
 		this.props.selectMonth(this.state.startDate.toDate());
-		this.props.renderMonthList(this.state.startDate.toDate());
+		this.props.submitMonth(this.state.startDate.toDate());
+		this.props.fetchMonths();
 		this.props.showMonth(false);
 	}
 
@@ -44,16 +49,22 @@ class EnterMonthForm extends Component {
 				<div
 					style={{
 						marginTop: "15px",
-						paddingLeft: "8px",
+						padding: "8px",
 						textAlign: "center"
 					}}
 				>
-					<h4
-						style={{ display: "inline-block", marginBottom: "5px" }}
+					<p
+						style={{
+							display: "inline-block",
+							marginBottom: "5px",
+							fontWeight: "600",
+							fontSize: "0.8em"
+						}}
 					>
-						Enter a Date
-					</h4>
-					<form>
+						Enter a date with this format: "MMMM YYYY" <br /> Eg:
+						December 2018
+					</p>
+					<form style={{ marginTop: "10px" }}>
 						<DatePicker
 							selected={this.state.startDate}
 							onChange={this.handleChange.bind(this)}
@@ -61,6 +72,8 @@ class EnterMonthForm extends Component {
 							showMonthDropdown
 							showYearDropdown
 							placeholderText="Select a date"
+							dateFormat="MMMM YYYY"
+							calendarContainer={CalendarContainer}
 						/>
 						<StyledInputButton
 							onClick={this.onClickHandler.bind(this)}
@@ -80,7 +93,10 @@ class EnterMonthForm extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ renderMonthList, selectMonth }, dispatch);
+	return bindActionCreators(
+		{ selectMonth, submitMonth, fetchMonths },
+		dispatch
+	);
 }
 
 export default connect(

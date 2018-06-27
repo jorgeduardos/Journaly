@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import {
 	StyledHeader,
@@ -14,21 +15,39 @@ class Header extends Component {
 			case null:
 				return;
 			case false:
-				return <StyledLogin href="/auth/google">Login</StyledLogin>;
+				return (
+					<StyledLogin href="/auth/google">
+						Login with Google
+					</StyledLogin>
+				);
 			default:
 				let name = `${this.props.user.googleName.givenName} ${
 					this.props.user.googleName.lastName
 				}`;
 				return (
 					<StyledWelcome>
-						<h3
+						<Link to={"/dashboard"}>
+							<h3
+								style={{
+									display: "inline-block",
+									marginLeft: "8px",
+									cursor: "pointer",
+									color: "black"
+								}}
+							>
+								{name}
+							</h3>
+						</Link>
+						<a
 							style={{
-								display: "inline-block",
-								marginLeft: "8px"
+								textDecoration: "none",
+								marginLeft: "10px",
+								fontSize: "0.8em"
 							}}
+							href="/api/logout"
 						>
-							{name}
-						</h3>
+							Logout
+						</a>
 					</StyledWelcome>
 				);
 		}
