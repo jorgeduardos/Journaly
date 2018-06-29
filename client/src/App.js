@@ -10,6 +10,7 @@ import { fetchUser } from "./actions/";
 import Header from "./components/Header.js";
 import GridContainer from "./components/GridContainer.js";
 import EnterMonthForm from "./containers/EnterMonthForm.js";
+import EnterDayForm from "./containers/EnterDayForm.js";
 
 const StyledApp = styled.section`
 	height: 100vh;
@@ -29,12 +30,21 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showMonthForm: false
+			showMonthForm: false,
+			showDayForm: false,
+			currentMonth: ""
 		};
 	}
 
 	showMonth = value => {
 		this.setState({ showMonthForm: value });
+	};
+
+	showDay = (value, monthID) => {
+		this.setState({
+			showDayForm: value,
+			currentMonth: monthID
+		});
 	};
 
 	render() {
@@ -47,11 +57,20 @@ class App extends Component {
 						exact
 						path={"/dashboard"}
 						render={() => (
-							<GridContainer showMonth={this.showMonth} />
+							<GridContainer
+								showMonth={this.showMonth}
+								showDay={this.showDay}
+							/>
 						)}
 					/>
 					{this.state.showMonthForm ? (
 						<EnterMonthForm showMonth={this.showMonth} />
+					) : null}
+					{this.state.showDayForm ? (
+						<EnterDayForm
+							showDay={this.showDay}
+							monthID={this.state.currentMonth}
+						/>
 					) : null}
 				</StyledApp>
 			</BrowserRouter>

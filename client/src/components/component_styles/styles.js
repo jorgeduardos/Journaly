@@ -39,7 +39,7 @@ export const StyledWelcome = styled.div`
 // GridContainer styles
 
 export const StyledContainer = styled.div`
-	height: 94%;
+	height: 100%;
 	width: 100%;
 	display: grid;
 	grid-template-rows: 100%;
@@ -95,6 +95,40 @@ export const StyledInputButton = styled.button`
 	font-size: 1em;
 	border-radius: 5px;
 `;
+
+//  DayFeatures
+
+//************************************************************************************
+//****************************** GRID LAYOUTS ****************************************
+
+const gridHeight = "93%";
+const gridWidth = "99.3%";
+
+//ChessLayout
+export const ChessLayout = styled.div`
+	display: grid;
+	height: ${gridHeight};
+	width: ${gridWidth};
+	grid-template-rows: 50% 50%;
+	grid-template-columns: 50% 50%;
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+`;
+
+//PenelopeLayout
+
+export const PenelopeLayout = styled.div`
+	display: grid;
+	height: ${gridHeight};
+	width: ${gridWidth};
+	grid-template-rows: 50% 50%;
+	grid-template-columns: 50% 50%;
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+`;
+
+//************************************************************************************
+//************************************************************************************
 
 // MISC
 

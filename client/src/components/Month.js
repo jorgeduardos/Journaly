@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import moment from "moment";
 
-import Day from "./Day.js";
+import DayList from "./DayList.js";
 
 import { selectMonth, deleteMonth } from "../actions/";
 
@@ -23,12 +23,16 @@ class Month extends Component {
 	}
 
 	onTrashClickHanlder() {
-		this.props.deleteMonth(this.props.id);
+		this.props.deleteMonth(this.props.monthID);
 	}
 
 	renderDays() {
 		return this.state.showDays ? (
-			<Day showCalendarFunction={this.props.showCalendarFunction} />
+			<DayList
+				showCalendarFunction={this.props.showCalendarFunction}
+				showDay={this.props.showDay}
+				monthID={this.props.monthID}
+			/>
 		) : null;
 	}
 

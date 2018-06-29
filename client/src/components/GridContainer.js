@@ -24,6 +24,7 @@ class GridContainer extends Component {
 			<StyledContainer>
 				<Entries
 					showMonth={this.props.showMonth}
+					showDay={this.props.showDay}
 					showCalendarFunction={this.showCalendarFunction}
 				/>
 				<FeaturesContainer showCalendar={this.state.showCalendar} />

@@ -15,15 +15,15 @@ class Entries extends Component {
 
 	renderMonth() {
 		if (this.props.months.length === 0) {
-			console.log("not months to display");
 		} else {
 			return _.map(this.props.months, month => {
 				return (
 					<Month
-						id={month._id}
+						monthID={month._id}
 						date={month.date}
 						key={month._id}
 						showCalendarFunction={this.props.showCalendarFunction}
+						showDay={this.props.showDay}
 					/>
 				);
 			});

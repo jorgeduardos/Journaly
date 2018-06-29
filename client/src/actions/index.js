@@ -1,8 +1,10 @@
 import axios from "axios";
 
 export const SELECT_MONTH = "select_month";
+export const SELECT_DAY = "select_day";
 export const MONTH = "month";
 export const FETCH_USER = "fetch_user";
+export const DAY = "day";
 
 export const fetchUser = () => async dispatch => {
 	const res = await axios.get("/api/current_user");
@@ -47,3 +49,43 @@ export const deleteMonth = id => async dispatch => {
 		payload: res.data
 	});
 };
+
+//// days actions
+
+export function selectDay(date) {
+	return {
+		type: SELECT_DAY,
+		payload: date
+	};
+}
+
+export const submitDay = (date, monthID) => async dispatch => {
+	console.log(monthID);
+	const res = await axios.post("/api/new_day", {
+		date: date,
+		monthID: monthID
+	});
+	dispatch({
+		type: FETCH_USER,
+		payload: res.data
+	});
+};
+
+export const fetchDays = monthID => async dispatch => {
+	const res = await axios.get("/api/days", { params: { monthID: monthID } });
+	dispatch({
+		type: DAY,
+		payload: res.data
+	});
+};
+
+// export const deleteDay = id => async dispatch => {
+// 	const res = await axios.delete("/api/delete_month", {
+// 		data: { monthID: id }
+// 	});
+
+// 	dispatch({
+// 		type: MONTH,
+// 		payload: res.data
+// 	});
+// };

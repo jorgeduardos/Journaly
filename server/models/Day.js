@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const daysSchema = new Schema({
+	date: Object,
 	toDo: Array,
 	goodThings: String,
 	improve: String,
 	notes: String,
-	_month: { type: Schema.Types.ObjectId, ref: "Month" }
+	_month: { type: Schema.Types.ObjectId, ref: "Month" },
+	_user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 
-module.exports = daysSchema;
+mongoose.model("days", daysSchema);

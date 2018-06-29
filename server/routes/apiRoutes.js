@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const Month = mongoose.model("months");
+const Day = mongoose.model("days");
 
 module.exports = app => {
 	app.post("/api/new_month", async (req, res) => {
@@ -21,5 +22,30 @@ module.exports = app => {
 		await Month.deleteOne({ _id: req.body.monthID });
 		const months = await Month.find({ _user: req.user.id });
 		res.send(months);
+	});
+
+	// dayRoutes
+
+	app.post("/api/new_day", async (req, res) => {
+		const day = await new Day({
+			date: req.body.date,
+			toDo: [],
+			goodThings: "",
+			improve: "",
+			notes: "",
+			_month: req.body.monthID, //month.id
+			_user: req.user.id
+		}).save();
+		// console.log("new_month route request", req.body);
+		res.send(req.user);
+	});
+
+	app.get("/api/days", async (req, res) => {
+		console.log(req.query.monthID);
+		const days = await Day.find({
+			_user: req.user.id,
+			_month: req.query.monthID
+		});
+		res.send(days);
 	});
 };
