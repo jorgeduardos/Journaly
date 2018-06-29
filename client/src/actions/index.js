@@ -71,8 +71,8 @@ export const submitDay = (date, monthID) => async dispatch => {
 	});
 };
 
-export const fetchDays = monthID => async dispatch => {
-	const res = await axios.get("/api/days", { params: { monthID: monthID } });
+export const fetchDays = () => async dispatch => {
+	const res = await axios.get("/api/days");
 	dispatch({
 		type: DAY,
 		payload: res.data

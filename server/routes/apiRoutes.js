@@ -20,6 +20,7 @@ module.exports = app => {
 
 	app.delete("/api/delete_month", async (req, res) => {
 		await Month.deleteOne({ _id: req.body.monthID });
+		await Day.deleteMany({ _month: req.body.monthID });
 		const months = await Month.find({ _user: req.user.id });
 		res.send(months);
 	});
@@ -41,10 +42,8 @@ module.exports = app => {
 	});
 
 	app.get("/api/days", async (req, res) => {
-		console.log(req.query.monthID);
 		const days = await Day.find({
-			_user: req.user.id,
-			_month: req.query.monthID
+			_user: req.user.id
 		});
 		res.send(days);
 	});

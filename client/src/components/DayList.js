@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import _ from "lodash";
 
-import { fetchDays } from "../actions/";
+// import { fetchDays } from "../actions/";
 
 import Day from "./Day.js";
 
@@ -11,21 +11,19 @@ import Day from "./Day.js";
 import { StyledButton } from "./component_styles/styles.js";
 
 class DayList extends Component {
-	componentDidMount() {
-		this.props.fetchDays(this.props.monthID);
-	}
-
 	onClickHandler() {
 		this.props.showCalendarFunction(false);
 		this.props.showDay(true, this.props.monthID);
 	}
 
 	renderDays() {
-		// console.log(this.props.days);
+		console.log(this.props.days);
 		if (this.props.days.length === 0) {
 		} else {
 			return _.map(this.props.days, day => {
-				return <Day date={day.date} />;
+				return day._month === this.props.monthID ? (
+					<Day date={day.date} />
+				) : null;
 			});
 		}
 	}
@@ -46,9 +44,9 @@ class DayList extends Component {
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ fetchDays }, dispatch);
-}
+// function mapDispatchToProps(dispatch) {
+// 	return bindActionCreators({ fetchDays }, dispatch);
+// }
 
 function mapStateToProps(state) {
 	return {
@@ -56,7 +54,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(DayList);
+export default connect(mapStateToProps)(DayList);

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import _ from "lodash";
 
-import { fetchMonths, selectMonth } from "../actions/";
+import { fetchMonths, selectMonth, fetchDays } from "../actions/";
 
 import Month from "./Month.js";
 import { StyledButton, StyledEntries } from "./component_styles/styles.js";
@@ -11,6 +11,7 @@ import { StyledButton, StyledEntries } from "./component_styles/styles.js";
 class Entries extends Component {
 	componentDidMount() {
 		this.props.fetchMonths();
+		this.props.fetchDays();
 	}
 
 	renderMonth() {
@@ -52,7 +53,10 @@ class Entries extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ fetchMonths, selectMonth }, dispatch);
+	return bindActionCreators(
+		{ fetchMonths, selectMonth, fetchDays },
+		dispatch
+	);
 }
 
 function mapStateToProps(state) {
