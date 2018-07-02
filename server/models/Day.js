@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const daysSchema = new Schema({
 	date: Object,
-	toDo: Array,
+	toDo: Object,
 	goodThings: String,
 	improve: String,
 	notes: String,

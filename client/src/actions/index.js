@@ -53,6 +53,7 @@ export const deleteMonth = id => async dispatch => {
 //// days actions
 
 export function selectDay(date) {
+	// console.log("in action", date);
 	return {
 		type: SELECT_DAY,
 		payload: date
@@ -60,7 +61,7 @@ export function selectDay(date) {
 }
 
 export const submitDay = (date, monthID) => async dispatch => {
-	console.log(monthID);
+	// console.log(monthID);
 	const res = await axios.post("/api/new_day", {
 		date: date,
 		monthID: monthID
@@ -79,13 +80,13 @@ export const fetchDays = () => async dispatch => {
 	});
 };
 
-// export const deleteDay = id => async dispatch => {
-// 	const res = await axios.delete("/api/delete_month", {
-// 		data: { monthID: id }
-// 	});
+export const deleteDay = id => async dispatch => {
+	const res = await axios.delete("/api/delete_day", {
+		data: { dayID: id }
+	});
 
-// 	dispatch({
-// 		type: MONTH,
-// 		payload: res.data
-// 	});
-// };
+	dispatch({
+		type: DAY,
+		payload: res.data
+	});
+};

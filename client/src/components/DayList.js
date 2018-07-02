@@ -12,17 +12,20 @@ import { StyledButton } from "./component_styles/styles.js";
 
 class DayList extends Component {
 	onClickHandler() {
-		this.props.showCalendarFunction(false);
 		this.props.showDay(true, this.props.monthID);
 	}
 
 	renderDays() {
-		console.log(this.props.days);
 		if (this.props.days.length === 0) {
 		} else {
 			return _.map(this.props.days, day => {
 				return day._month === this.props.monthID ? (
-					<Day date={day.date} />
+					<Day
+						date={day.date}
+						key={day._id}
+						dayID={day._id}
+						showCalendarFunction={this.props.showCalendarFunction}
+					/>
 				) : null;
 			});
 		}
@@ -43,10 +46,6 @@ class DayList extends Component {
 		);
 	}
 }
-
-// function mapDispatchToProps(dispatch) {
-// 	return bindActionCreators({ fetchDays }, dispatch);
-// }
 
 function mapStateToProps(state) {
 	return {

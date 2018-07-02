@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import moment from "moment";
 
 //components
 import WidgetNav from "./widgets/WidgetNav.js";
@@ -16,7 +19,7 @@ class DayFeatures extends Component {
 		return (
 			<div style={{ height: "100%" }}>
 				<h3 style={{ textAlign: "center", marginBottom: "10px" }}>
-					Junio 19 del 2019
+					{moment(this.props.selectedDay).format("MMMM Do YYYY")}
 				</h3>
 				<WidgetNav />
 				<DayGrid
@@ -28,4 +31,10 @@ class DayFeatures extends Component {
 	}
 }
 
-export default DayFeatures;
+function mapStateToProps(state) {
+	return {
+		selectedDay: state.selectedDay
+	};
+}
+
+export default connect(mapStateToProps)(DayFeatures);

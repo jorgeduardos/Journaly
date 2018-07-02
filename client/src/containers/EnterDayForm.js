@@ -26,7 +26,7 @@ class EnterMonthForm extends Component {
 		e.preventDefault();
 		// this.props.selectDay(this.state.startDate.toDate()); // selectDay
 		this.props.submitDay(this.state.startDate.toDate(), this.props.monthID); // submitDay
-		// this.props.fetchDays(); // fetchDays
+		this.props.fetchDays(); // fetchDays
 		this.props.showDay(false); // showDay
 	}
 

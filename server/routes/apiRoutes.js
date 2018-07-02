@@ -47,4 +47,11 @@ module.exports = app => {
 		});
 		res.send(days);
 	});
+
+	app.delete("/api/delete_day", async (req, res) => {
+		// console.log(req.body);
+		await Day.deleteOne({ _id: req.body.dayID });
+		const days = await Day.find({ _user: req.user.id });
+		res.send(days);
+	});
 };

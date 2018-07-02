@@ -8,7 +8,7 @@ import DaysReducer from "./DaysReducer.js";
 
 export default combineReducers({
 	selectedMonth: SelectMonthReducer,
-	selectDay: SelectDayReducer,
+	selectedDay: SelectDayReducer,
 	months: MonthsReducer,
 	days: DaysReducer,
 	user: AuthReducer
