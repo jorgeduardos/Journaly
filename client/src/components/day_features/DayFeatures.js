@@ -12,7 +12,7 @@ class DayFeatures extends Component {
 		super(props);
 		this.state = {
 			layoutType: "PENELOPE",
-			widgets: ["TODOLIST", "TODOLIST"] //array of strings
+			widgets: ["TODOLIST"] //array of strings
 		};
 	}
 	render() {

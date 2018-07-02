@@ -15,6 +15,7 @@ class Day extends Component {
 
 	onTrashClickHanlder() {
 		this.props.deleteDay(this.props.dayID);
+		this.props.showCalendarFunction(true);
 	}
 
 	render() {
@@ -48,7 +49,13 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ selectDay, deleteDay }, dispatch);
 }
 
+function mapStateToProps(state) {
+	return {
+		days: state.days
+	};
+}
+
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(Day);

@@ -98,6 +98,13 @@ export const StyledInputButton = styled.button`
 
 //  DayFeatures
 
+// GridChilds
+
+export const StyledGridChild = styled.div`
+	padding: 30px;
+	background-color: orange;
+`;
+
 //************************************************************************************
 //****************************** GRID LAYOUTS ****************************************
 
@@ -128,9 +135,23 @@ export const PenelopeLayout = styled.div`
 `;
 
 //************************************************************************************
-//************************************************************************************
+//*********************************** WIDGETS ************************************
 
-// MISC
+// ToDoList
+
+export const StyledTodoList = styled.div`
+	width: 90%;
+	margin: auto;
+`;
+
+export const StyledTable = styled.table`
+	text-align: left;
+	border: 1px solid gray;
+	width: 100%;
+	padding: 10px;
+`;
+
+/////////////////////////////////////////////////////////////////////////// MISC
 
 export const StyledButton = styled.button`
 	background-color: transparent;

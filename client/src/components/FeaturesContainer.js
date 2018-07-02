@@ -7,8 +7,8 @@ class FeaturesContainer extends Component {
 	render() {
 		return (
 			<div style={{ height: "90%", width: "95%", padding: "25px" }}>
-				{this.props.showCalendar ? <Calendar /> : <DayFeatures />}
-				{/*<DayFeatures />*/}
+				{/*this.props.showCalendar ? <Calendar /> : <DayFeatures />*/}
+				{<DayFeatures />}
 			</div>
 		);
 	}

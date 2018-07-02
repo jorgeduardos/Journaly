@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import ToDoList from "./widgets/ToDoList.js";
 
+import { StyledGridChild } from "../component_styles/styles.js";
+
 class GridChilds extends Component {
 	renderWidgets(widget, i) {
 		switch (widget[i]) {
@@ -16,46 +18,46 @@ class GridChilds extends Component {
 		switch (layoutType) {
 			case "CHESS":
 				return [
-					<div key="1" style={{ backgroundColor: "orange" }}>
+					<StyledGridChild key="1">
 						{this.renderWidgets(this.props.widgets, 0)}
-					</div>,
-					<div key="2" style={{ backgroundColor: "orange" }}>
+					</StyledGridChild>,
+					<StyledGridChild key="2">
 						{this.props.widgets[1]
 							? this.renderWidgets(this.props.widgets, 1)
 							: null}
-					</div>,
-					<div key="3" style={{ backgroundColor: "orange" }}>
+					</StyledGridChild>,
+					<StyledGridChild key="3">
 						{this.props.widgets[2]
 							? this.renderWidgets(this.props.widgets, 2)
 							: null}
-					</div>,
-					<div key="4" style={{ backgroundColor: "orange" }}>
+					</StyledGridChild>,
+					<StyledGridChild key="4">
 						{this.props.widgets[3]
 							? this.renderWidgets(this.props.widgets, 3)
 							: null}
-					</div>
+					</StyledGridChild>
 				];
 			case "PENELOPE":
 				return [
-					<div
+					<StyledGridChild
 						key="1"
 						style={{ gridRow: "span 2", backgroundColor: "orange" }}
 					>
 						{this.renderWidgets(this.props.widgets, 0)}
-					</div>,
-					<div key="2" style={{ backgroundColor: "orange" }}>
+					</StyledGridChild>,
+					<StyledGridChild key="2">
 						{this.renderWidgets(this.props.widgets, 1)}
-					</div>,
-					<div key="3" style={{ backgroundColor: "orange" }}>
+					</StyledGridChild>,
+					<StyledGridChild key="3">
 						{this.renderWidgets(this.props.widgets, 2)}
-					</div>
+					</StyledGridChild>
 				];
 			case "KHALUA":
 				return [
-					<div key="1" style={{ backgroundColor: "orange" }}>
+					<StyledGridChild key="1">
 						{this.renderWidgets(this.props.widgets, 0)}
-					</div>,
-					<div
+					</StyledGridChild>,
+					<StyledGridChild
 						key="2"
 						style={{
 							gridColumnStart: "2",
@@ -64,19 +66,19 @@ class GridChilds extends Component {
 						}}
 					>
 						{this.renderWidgets(this.props.widgets, 1)}
-					</div>,
-					<div
+					</StyledGridChild>,
+					<StyledGridChild
 						key="3"
 						style={{
 							backgroundColor: "orange"
 						}}
 					>
 						{this.renderWidgets(this.props.widgets, 2)}
-					</div>
+					</StyledGridChild>
 				];
 			case "VERTICAL-TRACK":
 				return [
-					<div
+					<StyledGridChild
 						key="1"
 						style={{
 							gridRowStart: "1",
@@ -85,8 +87,8 @@ class GridChilds extends Component {
 						}}
 					>
 						{this.renderWidgets(this.props.widgets, 0)}
-					</div>,
-					<div
+					</StyledGridChild>,
+					<StyledGridChild
 						key="2"
 						style={{
 							gridRowStart: "2",
@@ -95,22 +97,22 @@ class GridChilds extends Component {
 						}}
 					>
 						{this.renderWidgets(this.props.widgets, 1)}
-					</div>
+					</StyledGridChild>
 				];
 			default:
 				return [
-					<div
+					<StyledGridChild
 						key="1"
 						style={{ gridRow: "span 2", backgroundColor: "orange" }}
 					>
 						{this.renderWidgets(this.props.widgets, 0)}
-					</div>,
-					<div key="2" style={{ backgroundColor: "orange" }}>
+					</StyledGridChild>,
+					<StyledGridChild key="2">
 						{this.renderWidgets(this.props.widgets, 1)}
-					</div>,
-					<div key="3" style={{ backgroundColor: "orange" }}>
+					</StyledGridChild>,
+					<StyledGridChild key="3">
 						{this.renderWidgets(this.props.widgets, 2)}
-					</div>
+					</StyledGridChild>
 				];
 		}
 	}
